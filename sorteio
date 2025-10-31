@@ -1,0 +1,51 @@
+<?php
+
+$chute = 0;
+
+$sorteado = sorteiaIntervalo();
+
+while ($chute != $sorteado) {
+
+    $chute = (int) readline(" Digite um número: \n");
+
+    if ($chute === $sorteado) {
+        print("você venceu com $numRodadas rodadas! ");
+    } else {
+        print("você perdeu,");
+
+        if ($chute > $sorteado) {
+            print(" chutou alto!");
+        } else {
+            print(" chutou baixo!");
+        }
+    }
+}
+
+function sorteiaIntervalo()
+{
+
+    print("Escolha um intervalo, exemplo: 1 - 5: ");
+
+
+    $min = (int) readline("informe o valor minimo: ");
+
+    $max = (int) readline("informe o valor maximo: ");
+
+    $sorteado = rand($min, $max);
+
+    return $sorteado;
+}
+
+    $rodadas = 0;
+
+    while($chute != $sorteado){
+    $rodadas++;
+    
+    if($chute === $sorteado){
+    break;
+    $numRodadas = $rodadas;
+    }
+
+   
+
+    }
