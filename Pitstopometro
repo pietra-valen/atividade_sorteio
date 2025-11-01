@@ -1,0 +1,50 @@
+<?php
+
+$vermelho = "\033[1;31m";
+$branco = "\033[1;37m";
+$fim = "\033[0m";
+
+print($vermelho . " Bem-vindo ao PitStopômetro F1 " . $fim . "\n\n");
+
+$total_voltas = (int) readline("Informe o número total de voltas da corrida: ");
+$duracao_pneus = (int) readline("Quantas voltas os pneus aguentam: ");
+$duracao_combustivel = (int) readline("Quantas voltas o tanque aguenta: ");
+
+
+$pit_pneus = $total_voltas / $duracao_pneus;
+$pit_combustivel = $total_voltas / $duracao_combustivel;
+
+$pit_pneus = (int) $pit_pneus;
+$pit_combustivel = (int) $pit_combustivel;
+
+
+if ($total_voltas % $duracao_pneus == 0) {
+    $pit_pneus = $pit_pneus - 1;
+}
+if ($total_voltas % $duracao_combustivel == 0) {
+    $pit_combustivel = $pit_combustivel - 1;
+}
+
+$total_pits = $pit_pneus;
+if ($pit_combustivel > $pit_pneus) {
+    $total_pits = $pit_combustivel;
+}
+
+print("\n" . $vermelho . "===== RESULTADO =====" . $fim . "\n");
+print($branco . "Paradas por pneus: $pit_pneus\n");
+print("Paradas por combustível: $pit_combustivel\n");
+print("Total de pit stops: $total_pits\n" . $fim);
+
+print("\n" . $vermelho . "Voltas sugeridas para parar:" . $fim . "\n");
+
+$volta = 1;
+while ($volta <= $total_voltas) {
+    if ($volta % $duracao_pneus == 0 or $volta % $duracao_combustivel == 0) {
+        print($branco . " Parada na volta $volta\n" . $fim);
+    }
+    $volta = $volta + 1;
+}
+
+print("\n" . $vermelho . "Boa corrida, piloto!" . $fim . "\n");
+
+?>
