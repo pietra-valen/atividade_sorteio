@@ -2,16 +2,22 @@
 
 $chute = 0;
 
+$tentativas = 0;
+
 $sorteado = sorteiaIntervalo();
+
+$pontos = 100;
 
 while ($chute != $sorteado) {
 
-    $chute = (int) readline(" Digite um número: \n");
+    $chute = (int) readline("Digite um número: ");
+    $tentativas++;
 
     if ($chute === $sorteado) {
-        print("você venceu com $numRodadas rodadas! ");
+        print("você venceu com $tentativas rodadas! ");
     } else {
         print("você perdeu,");
+        $pontos -= 10;
 
         if ($chute > $sorteado) {
             print(" chutou alto!");
@@ -20,6 +26,12 @@ while ($chute != $sorteado) {
         }
     }
 }
+
+if($pontos < 0){
+    $pontos = 0;
+}
+
+print("Sua pontuação final foi: $pontos pontos.\n");
 
 function sorteiaIntervalo()
 {
@@ -35,17 +47,3 @@ function sorteiaIntervalo()
 
     return $sorteado;
 }
-
-    $rodadas = 0;
-
-    while($chute != $sorteado){
-    $rodadas++;
-    
-    if($chute === $sorteado){
-    break;
-    $numRodadas = $rodadas;
-    }
-
-   
-
-    }
